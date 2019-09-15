@@ -1,0 +1,53 @@
+{
+  "name": "@gecks/marker",
+  "version": "0.0.0",
+  "description": "A small utility for marking objects and recognize them later",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "typecheck:source": "tsc --build src/tsconfig-check.json",
+    "typecheck:tests": "npm run clean:testlib && tsc --build test",
+    "typecheck": "npm run typecheck:source && npm run typecheck:tests",
+    "lint:source": "eslint src/**",
+    "lint:tests": "eslint test/**",
+    "lint": "npm run lint:source && npm run lint:tests",
+    "lint:source-fix": "eslint --fix src/**",
+    "lint:tests-fix": "eslint --fix test/**",
+    "lint:fix": "npm run lint:source-fix && npm run lint:tests-fix",
+    "compile": "babel src --out-dir lib --extensions \".ts\"",
+    "test": "jest",
+    "build:declarations": "tsc --build src",
+    "clean:lib": "rimraf lib",
+    "clean:testlib": "rimraf test/lib",
+    "ready": "npm run clean:lib && npm run lint && npm run typecheck && npm run build:declarations && npm run compile",
+    "release": "np"
+  },
+  "repository": {
+    "url": "https://github.com/RWalkling/marker"
+  },
+  "author": "Raphael Walkling",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^3.6.3",
+    "@types/node": "^12.7.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/cli": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "eslint": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^2.2.0",
+    "@typescript-eslint/parser": "^2.2.0",
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "np": "^5.1.0",
+    "rimraf": "^3.0.0"
+  }
+}
